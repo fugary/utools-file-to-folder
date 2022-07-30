@@ -49,7 +49,6 @@ window.onload = function () {
                 console.log('用户进入插件', code, type, payload)
                 if (type === "files") {
                     this.filesData = payload || []
-                    this.moveFiles(payload);
                 }
             });
         }
