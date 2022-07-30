@@ -1,0 +1,23 @@
+{
+	"main": "index.html",
+	"logo": "logo.png",
+	"preload": "preload.js",
+	"features": [
+		{
+			"code": "新建文件夹",
+			"explain": "选中文件或文件夹并自动移动或复制到一个新建文件夹中，也可以指定已经存在的文件夹",
+			"cmds": [
+				"新建文件夹",
+				"New Folder",
+				"新建目录",
+				"New Directory",
+				{
+					"type": "files",
+					"label": "新建文件夹",
+					"fileType": "file, directory",
+					"minLength": 1
+				}
+			]
+		}
+	]
+}
