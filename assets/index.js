@@ -23,8 +23,7 @@ window.onload = function () {
             },
             dragFiles(e) {
                 if (e.dataTransfer && e.dataTransfer.files) {
-                    for (let i = 0; i < e.dataTransfer.files.length; i++) {
-                        const dragFile = e.dataTransfer.files[i];
+                    for (let dragFile of e.dataTransfer.files) {
                         const file = {
                             name: dragFile.name,
                             path: dragFile.path
@@ -50,6 +49,7 @@ window.onload = function () {
                 if (type === "files") {
                     this.filesData = payload || []
                 }
+                document.documentElement.className = utools.isDarkColors() ? 'dark' : ''
             });
         }
     }).mount("#app");

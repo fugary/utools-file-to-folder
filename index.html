@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="./assets/bootstrap.min.css" />
+<link rel="stylesheet" href="./assets/bootstrap-nightshade.min.css" />
 
 <body>
-    <div id="app" class="container" @dragover.prevent @drop.prevent>
+    <div id="app" class="container pt-3" @dragover.prevent @drop.prevent>
         <form autocomplete="off">
             <div class="mb-3 row">
                 <label for="folderName" class="col-sm-2 col-form-label">新建文件夹名：</label>
@@ -42,8 +42,8 @@
                 <td>{{index+1}}</td>
                 <td>{{file.path}}</td>
                 <td>
-                    <span class="badge text-bg-success" v-if="file.isDirectory">目录</span>
-                    <span class="badge text-bg-primary" v-if="file.isFile">文件</span>
+                    <span class="badge bg-success" v-if="file.isDirectory">目录</span>
+                    <span class="badge bg-primary" v-if="file.isFile">文件</span>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger btn-sm" @click="removeFileFromList(file)">移除</button>
@@ -52,8 +52,8 @@
         </table>
         <div @dragover.prevent @drop.prevent="dragFiles" class="border rounded bg-light dashed">
             <div class="d-flex p-2 justify-content-center align-items-center flex-column" style="height: 200px;">
-                <img src="./assets/drop-icon.png" style="width:100px;" class="align-self-center"/>
-                <span class="align-self-center text-black-50">拖动文件到此处</span>
+                <img src="./assets/drop-icon.png" alt="拖动文件到此处" style="width:100px;" class="align-self-center"/>
+                <span class="align-self-center text-black-30">拖动文件到此处</span>
             </div>
         </div>
     </div>
