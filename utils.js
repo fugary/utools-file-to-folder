@@ -24,6 +24,12 @@ const moveOrCopyFile = function (files, dir, copy, checkFileFunc) {
         }
       })
       moveOrCopyFile(subFiles, path.join(dir, file.name), copy);
+      if(!subFiles.length){ // 空文件夹没有复制和移动的问题
+        fs.mkdirSync(path.join(dir, file.name), { recursive: true });
+      }
+      if (!copy) { // 处理移动完还有个文件夹残留问题
+        fs.rmdirSync(file.path);
+      }
     } else {
       if (copy) {
         customCopyFile(file.path, path.join(dir, file.name));
