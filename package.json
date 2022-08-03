@@ -1,0 +1,24 @@
+{
+  "name": "utools-file-to-folder",
+  "version": "1.0.0",
+  "description": "utools插件，选中文件或文件夹并自动移动或复制到一个新建文件夹中，也可以指定已经存在的文件夹",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js build",
+    "clean": "node build.js clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fugary/utools-file-to-folder.git"
+  },
+  "keywords": [
+    "utools",
+    "新建文件夹"
+  ],
+  "author": "Gary Fu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fugary/utools-file-to-folder/issues"
+  },
+  "homepage": "https://github.com/fugary/utools-file-to-folder#readme"
+}

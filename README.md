@@ -15,4 +15,6 @@ uTools工具的插件，使用超级面板，选中文件或文件夹并自动�
 
 优化代码，增加黑色主题模式。
 
-utools打包不要包含`git`等其他文件，可以使用`node build.js`输出到`dist`目录，用`dist`目录打包
+utools打包不要包含`git`等其他文件，可以使用`npm run build`输出到`dist`目录，用`dist`目录打包
+
+`npm run clean`——清理`dist`目录
