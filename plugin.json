@@ -9,8 +9,6 @@
 			"cmds": [
 				"新建文件夹",
 				"New Folder",
-				"新建目录",
-				"New Directory",
 				{
 					"type": "files",
 					"label": "新建文件夹",

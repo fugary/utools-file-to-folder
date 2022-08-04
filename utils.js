@@ -7,6 +7,10 @@ const moveOrCopyFile = function (files, dir, copy, checkFileFunc) {
   if (!path.isAbsolute(dir)) {
     dir = path.join(path.resolve(files[0].path, '..'), dir);
   }
+  if(files.length && !fs.existsSync(files[0].path)){
+    utools.showNotification('文件或文件夹不存在，不能执行移动或复制');
+    throw new Error('File not exists!');
+  }
   files.forEach(file => {
     if (checkFileFunc && !checkFileFunc(file)) {
       return;

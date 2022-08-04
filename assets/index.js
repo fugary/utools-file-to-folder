@@ -20,6 +20,7 @@ window.onload = function () {
             moveOrCopyFile(copy) {
                 window.moveOrCopyFile(this.filesData, this.folderName, copy);
                 utools.showNotification(copy ? '文件或文件夹复制完成' : '文件或文件夹移动完成');
+                this.clearFileNames();
             },
             dragFiles(e) {
                 if (e.dataTransfer && e.dataTransfer.files) {
