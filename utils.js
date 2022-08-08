@@ -49,7 +49,13 @@ const customMoveFile = function (fromPath, toPath) {
   try {
     fs.renameSync(fromPath, toPath);
   } catch (e) {
-    utools.showNotification('不支持跨盘移动文件，请使用复制方式');
+    let msg = e.message;
+    if (e.code === 'EBUSY') {
+      msg = `文件正在使用中，${e.message}`;
+    } else if (e.code === 'EXDEV') {
+      msg = `不支持跨盘移动文件，${e.message}`;
+    }
+    utools.showNotification(msg);
     throw e;
   }
 }

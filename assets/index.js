@@ -21,6 +21,8 @@ window.onload = function () {
                 window.moveOrCopyFile(this.filesData, this.folderName, copy);
                 utools.showNotification(copy ? '文件或文件夹复制完成' : '文件或文件夹移动完成');
                 this.clearFileNames();
+                utools.outPlugin();
+                utools.hideMainWindow();
             },
             dragFiles(e) {
                 if (e.dataTransfer && e.dataTransfer.files) {
@@ -45,12 +47,12 @@ window.onload = function () {
             }
         },
         mounted() {
+            document.documentElement.className = utools.isDarkColors() ? 'dark' : ''
             utools.onPluginEnter(({ code, type, payload, optional }) => {
                 console.log('用户进入插件', code, type, payload)
                 if (type === "files") {
                     this.filesData = payload || []
                 }
-                document.documentElement.className = utools.isDarkColors() ? 'dark' : ''
             });
         }
     }).mount("#app");
