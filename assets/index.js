@@ -3,8 +3,12 @@ window.onload = function () {
         data() {
             return {
                 filesData: [],
-                folderName: ''
+                folderName: '',
+                currentFolderPath: ''
             }
+        },
+        updated () {
+            document.querySelector('#folderName').focus()
         },
         methods: {
             selectFolderName() {
@@ -17,12 +21,21 @@ window.onload = function () {
                 this.filesData = [];
                 this.folderName = '';
             },
+            outCurrentPlugin () {
+                utools.outPlugin();
+                utools.hideMainWindow();
+            },
+            createCurrentFolder(){
+                window.createCurrentFolder(this.folderName)
+                utools.showNotification('文件夹创建完成');
+                this.clearFileNames();
+                this.outCurrentPlugin();
+            },
             moveOrCopyFile(copy) {
                 window.moveOrCopyFile(this.filesData, this.folderName, copy);
                 utools.showNotification(copy ? '文件或文件夹复制完成' : '文件或文件夹移动完成');
                 this.clearFileNames();
-                utools.outPlugin();
-                utools.hideMainWindow();
+                this.outCurrentPlugin();
             },
             dragFiles(e) {
                 if (e.dataTransfer && e.dataTransfer.files) {
@@ -54,6 +67,7 @@ window.onload = function () {
                     this.filesData = payload || []
                 }
             });
+            this.currentFolderPath = utools.getCurrentFolderPath()
         }
     }).mount("#app");
 }

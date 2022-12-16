@@ -1,6 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+const createCurrentFolder = function (folderName) {
+  if (!path.isAbsolute(folderName)) {
+    folderName = path.join(utools.getCurrentFolderPath(), folderName)
+  }
+  fs.mkdirSync(folderName, { recursive: true });
+}
+
 const moveOrCopyFile = function (files, dir, copy, checkFileFunc) {
   // 如果不是绝对路径，根据文件转换成绝对路径
   dir = dir.trim();
@@ -72,6 +79,7 @@ const checkDragFile = function (file) {
 }
 
 module.exports = {
+  createCurrentFolder,
   moveOrCopyFile,
   customMoveFile,
   customCopyFile,

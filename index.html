@@ -8,6 +8,11 @@
 <body>
     <div id="app" class="container pt-3" @dragover.prevent @drop.prevent>
         <form autocomplete="off">
+            <div class="mb-3 row" v-if="currentFolderPath">
+                <div class="col-sm-12">
+                    当前路径：{{currentFolderPath}}
+                </div>
+            </div>
             <div class="mb-3 row">
                 <label for="folderName" class="col-sm-2 col-form-label">新建文件夹名：</label>
                 <div class="col-sm-10">
@@ -21,7 +26,9 @@
             <div class="mb-3 row">
                 <div class="col-sm-3">
                     <button type="button" class="btn btn-primary" @click="moveOrCopyFile()"
-                        :disabled="!filesData.length||!folderName">移动到新文件夹</button>
+                            v-if="filesData.length" :disabled="!folderName">移动到新文件夹</button>
+                    <button type="button" class="btn btn-primary" @click="createCurrentFolder()"
+                            v-if="!filesData.length" :disabled="!currentFolderPath||!folderName">新建文件夹</button>
                 </div>
                 <div class="col-sm-3">
                     <button type="button" class="btn btn-info" @click="moveOrCopyFile(true)"
